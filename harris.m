@@ -1,12 +1,20 @@
 function[corner_coords,descriptors] = harris(I,w, threshold,suppression)
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CSCI 5722 Computer Vision
+% Name: Yinbo Chen
+% Professor: Ioana Fleming
+% Assignment: HW3 
+% Purpose: For better understanding of corner detection 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 1.compute matrix M 
 % compute image gradients Ix Iy for all pixels
 % compute squares of derivatives Ix^2,Iy^2,Ix*Iy
 % compute m by convolving with Gaussian g
 % img = imread('test.jpg');
-threshold =12*10^7;
+threshold =13*10^7;
 w =9;
-suppression = true;
+suppression = false;
 
 img = imread('Square0.jpg');
 img = rgb2gray(img);
