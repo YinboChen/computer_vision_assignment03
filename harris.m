@@ -10,6 +10,7 @@ suppression = true;
 
 img = imread('Square0.jpg');
 img = rgb2gray(img);
+
 % imshow(img)
 R = size(img,1);
 C = size(img,2);
