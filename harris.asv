@@ -12,11 +12,11 @@ function[corner_coords,descriptors] = harris(I,w, threshold,suppression)
 % compute squares of derivatives Ix^2,Iy^2,Ix*Iy
 % compute m by convolving with Gaussian g
 % img = imread('test.jpg');
-threshold =100;
+threshold =0.1;
 w =3;
 suppression = true;
 
-img = imread('test.jpg');
+img = imread('checkerboard_pattern.png');
 img = rgb2gray(img);
 
 % imshow(img)
@@ -98,6 +98,6 @@ end
 
 figure,imshow(img);
 hold on
-plot(corner_coords(:,1),corner_coords(:,2),'rx','MarkerSize',12);
+plot(corner_coords(:,1),corner_coords(:,2),'r+','MarkerSize');
 
 end
