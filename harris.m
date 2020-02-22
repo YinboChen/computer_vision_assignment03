@@ -13,10 +13,25 @@ function[corner_coords,descriptors] = harris(I,w, threshold,suppression)
 % compute m by convolving with Gaussian g
 % img = imread('test.jpg');
 threshold =100;
-w =3;
+w =7;
 suppression = true;
+% with or without non-maximun
+dict = 4;
+% dict is a var which controls to input different images
+% image. 
+% 1 = normal picture without translation, scaling and rotation.
+% 2 = a rotated ,3 = translated, 4 = scaled
 
-img = imread('test.jpg');
+if dict == 1
+    img = imread('test.jpg');
+elseif dict == 2
+    img = imread('test_45.jpg');
+elseif dict == 3
+    img = imread('test_trans.jpg');
+elseif dict == 4
+    img = imread('test_scale.jpg');
+end
+% img = imread('test.jpg');
 img = rgb2gray(img);
 
 % imshow(img)
@@ -94,10 +109,18 @@ elseif suppression == false
  end
               
 end
-            
 
-figure,imshow(img);
+prints;
+    function prints  
+%        a nested function for printing differetn info 
+if suppression == true
+figure,imshow(img),title('With non-maximum suppression');
 hold on
 plot(corner_coords(:,1),corner_coords(:,2),'rx','MarkerSize',12);
-
+elseif suppression == false
+    figure,imshow(img),title('Without non-maximum suppression');
+    hold on
+    plot(corner_coords(:,1),corner_coords(:,2),'rx','MarkerSize',12); 
+end
+    end
 end
