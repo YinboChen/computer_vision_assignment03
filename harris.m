@@ -12,27 +12,12 @@ function[corner_coords,descriptors] = harris(I,w, threshold,suppression)
 % compute squares of derivatives Ix^2,Iy^2,Ix*Iy
 % compute m by convolving with Gaussian g
 % img = imread('test.jpg');
-threshold =100;
-w =7;
-suppression = true;
-% with or without non-maximun
-dict = 4;
-% dict is a var which controls to input different images
-% image. 
-% 1 = normal picture without translation, scaling and rotation.
-% 2 = a rotated ,3 = translated, 4 = scaled
-
-if dict == 1
-    img = imread('test.jpg');
-elseif dict == 2
-    img = imread('test_45.jpg');
-elseif dict == 3
-    img = imread('test_trans.jpg');
-elseif dict == 4
-    img = imread('test_scale.jpg');
+img = I;
+if size(img,3)>1
+    img = rgb2gray(img);
+else
+    img = img;
 end
-% img = imread('test.jpg');
-img = rgb2gray(img);
 
 % imshow(img)
 R = size(img,1);
